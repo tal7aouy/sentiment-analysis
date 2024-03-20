@@ -5,9 +5,9 @@ import pkgutil
 
 import torch
 
-from ml.engines.system import TweetSystem
-from ml.utils.constants import EXPERIMENTS_DIR
-from ml.utils.tokenizer import Tokenizer
+from dl.engines.system import TweetSystem
+from dl.utils.constants import EXPERIMENTS_DIR
+from dl.utils.tokenizer import Tokenizer
 
 logger = logging.getLogger(__name__)
 
@@ -43,7 +43,7 @@ def get_model_at_version(model_name: str, version: str, model_type: str = "best-
 
 # get a model class by its class name
 def get_model_by_name(class_name: str):
-    models_module = "ml.models"
+    models_module = "dl.models"
     parent_module = importlib.import_module(models_module)
 
     for loader, name, is_pkg in pkgutil.walk_packages(parent_module.__path__):

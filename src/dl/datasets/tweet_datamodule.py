@@ -6,10 +6,10 @@ from lightning.pytorch import LightningDataModule
 from sklearn.model_selection import train_test_split
 from torch.utils.data import DataLoader
 
-from ml.data.make_dataset import make_dataset
-from ml.data.preprocessing import preprocess
-from ml.datasets.tweet_dataset import TweetDataset
-from ml.utils.constants import PROCESSED_DATA_DIR
+from dl.data.make_dataset import make_dataset
+from dl.data.preprocessing import preprocess
+from dl.datasets.tweet_dataset import TweetDataset
+from dl.utils.constants import PROCESSED_DATA_DIR
 
 logger = logging.getLogger(__name__)
 

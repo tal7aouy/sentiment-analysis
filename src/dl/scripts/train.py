@@ -8,11 +8,11 @@ from lightning.pytorch.loggers import TensorBoardLogger
 from torchtext.vocab import GloVe
 from tqdm import tqdm
 
-from ml.datasets.tweet_datamodule import TweetDataModule
-from ml.engines.system import TweetSystem
-from ml.models.lstm import LSTMClassifier
-from ml.utils.constants import EXPERIMENTS_DIR, ROOT_DIR, EMBEDDINGS_DIR
-from ml.utils.tokenizer import Tokenizer
+from dl.datasets.tweet_datamodule import TweetDataModule
+from dl.engines.system import TweetSystem
+from dl.models.lstm import LSTMClassifier
+from dl.utils.constants import EXPERIMENTS_DIR, ROOT_DIR, EMBEDDINGS_DIR
+from dl.utils.tokenizer import Tokenizer
 
 tqdm.pandas(file=sys.stdout)
 

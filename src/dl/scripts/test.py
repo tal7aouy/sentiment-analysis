@@ -9,9 +9,9 @@ from lightning.pytorch.loggers import TensorBoardLogger
 from sklearn.metrics import classification_report
 from tqdm import tqdm
 
-from ml.datasets.tweet_datamodule import TweetDataModule
-from ml.utils.constants import EXPERIMENTS_DIR, ROOT_DIR
-from ml.utils.helpers import load_model_at_version
+from dl.datasets.tweet_datamodule import TweetDataModule
+from dl.utils.constants import EXPERIMENTS_DIR, ROOT_DIR
+from dl.utils.helpers import load_model_at_version
 
 tqdm.pandas(file=sys.stdout)
 

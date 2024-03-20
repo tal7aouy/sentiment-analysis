@@ -4,7 +4,7 @@ from torch import nn
 from torch.optim import Adam
 from torchmetrics.classification import BinaryAccuracy
 
-from ml.utils.tokenizer import Tokenizer
+from dl.utils.tokenizer import Tokenizer
 
 
 class TweetSystem(LightningModule):

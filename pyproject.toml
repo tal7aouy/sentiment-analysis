@@ -34,6 +34,6 @@ target-version = ['py310']
 skip-string-normalization = true
 
 [tool.pdm.scripts]
-ml = "python ./src/ml/scripts/train.py"
+dl = "python ./src/dl/scripts/train.py"
 tensorboard = "tensorboard --logdir ./.experiments"
 format = "black ."

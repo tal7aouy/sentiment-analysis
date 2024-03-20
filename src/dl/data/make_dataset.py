@@ -5,7 +5,7 @@ import pandas as pd
 from kaggle import KaggleApi
 from sklearn.model_selection import train_test_split
 
-from ml.utils.constants import RAW_DATA_DIR, PROCESSED_DATA_DIR
+from dl.utils.constants import RAW_DATA_DIR, PROCESSED_DATA_DIR
 
 logger = logging.getLogger(__name__)
 
