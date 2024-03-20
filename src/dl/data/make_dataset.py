@@ -1,6 +1,6 @@
 import logging
 import os
-
+import zipfile
 import pandas as pd
 from kaggle import KaggleApi
 from sklearn.model_selection import train_test_split
@@ -16,21 +16,28 @@ def make_dataset(split: float = 0.2, frac: float = 0.05):
     api.authenticate()
     # Download the dataset from Kaggle
     logger.info("Downloading dataset from Kaggle")
+    api.dataset_download_files('kazanova/sentiment140', path=RAW_DATA_DIR, unzip=False)
 
-    api.dataset_download_files('kazanova/sentiment140', path=RAW_DATA_DIR, unzip=True)
-    # Create train and test sets
+    # Check if the dataset has been unzipped
     raw_files = os.listdir(RAW_DATA_DIR)
-
+    zip_files = [f for f in raw_files if f.endswith('.zip')]
+    
+    # If there is a zip file, unzip it
+    if zip_files:
+        logger.info(f"Unzipping dataset files in {RAW_DATA_DIR}")
+        with zipfile.ZipFile(os.path.join(RAW_DATA_DIR, zip_files[0]), 'r') as zip_ref:
+            zip_ref.extractall(RAW_DATA_DIR)
+        raw_files = os.listdir(RAW_DATA_DIR)  # Update the file list after unzipping
+    
+    # Check for multiple raw data files
     if len(raw_files) > 1:
-        raise ValueError(f"More than one raw data files in {RAW_DATA_DIR}")
+        raise ValueError(f"More than one raw data file in {RAW_DATA_DIR}")
 
+    # Assuming there's only one CSV file after extraction
     raw_data_file = os.path.join(RAW_DATA_DIR, raw_files[0])
 
     if not os.path.isfile(raw_data_file):
         raise ValueError(f"{raw_data_file} is not a file")
-
-    # load downloaded data and create train and test sets
-    logger.info(f"Reading data from {raw_data_file}")
 
     data = pd.read_csv(
         os.path.join(RAW_DATA_DIR, raw_data_file),
